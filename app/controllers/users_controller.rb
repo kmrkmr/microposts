@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_message, only: [:edit, :update]
+  before_action :set_message, only: [:show, :edit, :update]
+  # 本人のみprofileの編集更新が可能
+  before_action :check_user_correct, only: [:edit, :update]
   
   def show
-    @user = User.find(params[:id])
   end
   
   def new
@@ -24,8 +25,9 @@ class UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
-      redirect_to user_path
+      redirect_to user_path, notice: '更新しました。'
     else
+      flash.now[:alert] = '再度編集してください。'
       render 'edit'
     end
     
@@ -40,6 +42,10 @@ class UsersController < ApplicationController
   
   def set_message
     @user = User.find(params[:id])
+  end
+  
+  def check_user_correct
+    redirect_to root_url if @user != current_user
   end
   
 end
