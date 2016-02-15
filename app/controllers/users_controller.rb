@@ -25,9 +25,9 @@ class UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
-      redirect_to user_path, notice: '更新しました。'
+      redirect_to user_url(@user), flash: { success: '更新しました。' }
     else
-      flash.now[:alert] = '再度編集してください。'
+      flash.now[:error] = '再度編集してください'
       render 'edit'
     end
     
