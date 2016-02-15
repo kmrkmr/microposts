@@ -21,11 +21,32 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+    if @user.update(user_params)
+      redirect_to user_url(@user), flash: { success: '更新しました。' }
+    else
+      flash.now[:error] = '再度編集してください'
+      render 'edit'
+    end
+    
+  end
+  
   
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :area, :profile)
+  end
+  
+  def set_message
+    @user = User.find(params[:id])
+  end
+  
+  def check_user_correct
+    redirect_to root_url if @user != current_user
   end
   
   def set_message

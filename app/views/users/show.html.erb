@@ -3,8 +3,11 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
       </h1>
+      <p>名前：<%= @user.name %></p>
+      <p>email：<%= @user.email %></p>
+　    <p>プロフィール：<%= @user.profile %></p>
+      <p>居住地域：<%= @user.area %></p>
     </section>
   </aside>
   <div class="col-md-8">

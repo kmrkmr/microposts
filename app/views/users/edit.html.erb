@@ -1,8 +1,8 @@
-<h1>Sign up</h1>
-    
+<h1>Edit</h1>
+
 <%= form_for(@user, html: {class: "form-horizontal"}) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
- <form>
+<%= render 'shared/error_messages', object: f.object %>
+<form>
   <div class="form-group">
     <label for="user_name" class="col-sm-2 control-label">ユーザー名</label>
     <div class="col-sm-6">
@@ -34,8 +34,23 @@
     </div>
     <div class="col-sm-4"></div>
   </div>
+
+  <div class="form-group">
+    <label for="message_profile" class="col-sm-2 control-label">プロフィール</label>
+    <div class="col-sm-6">
+        <%= f.text_area :profile, class: "form-control" %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="user_area" class="col-sm-2 control-label">居住地域</label>
+    <div class="col-sm-6">
+        <%= f.text_field :area, class: "form-control" %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
   
-  <button type="submit" class="btn btn-large btn-primary">Create my account!</button>
- </form>
+  <button type="submit" class="btn btn-default">更新</button>
+</form>
 <% end %>
-   
