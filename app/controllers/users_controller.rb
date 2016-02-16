@@ -22,9 +22,11 @@ class UsersController < ApplicationController
   end
   
   def followings
+     @users = current_user.following_users.order(created_at: :desc)
   end
   
   def followers
+    @users = current_user.follower_users.order(created_at: :desc)
   end
   
   private

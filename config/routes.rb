@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get    'login' , to: 'sessions#new'
   post   'login' , to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  get    'followings', to:'users#followings', as:'followings'
+  get    'followers', to:'users#followers', as:'followers'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts

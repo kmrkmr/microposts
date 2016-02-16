@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   
   # 他のユーザーをフォローする
   def follow(other_user)
+    # Relationship.find_or_create_by(followed_id: other_user.id, follower_id: self.id)
     following_relationships.find_or_create_by(followed_id: other_user.id)
   end
 
@@ -30,6 +31,7 @@ class User < ActiveRecord::Base
 
   # あるユーザーをフォローしているかどうか？
   def following?(other_user)
+    # Relationship.exists?({followed_id: other_user.id, follower_id: self.id})
     following_users.include?(other_user)
   end
 end
