@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update]
+  before_action :set_message, only: [:show, :edit, :update, :followings, :followers]
   # 本人のみprofileの編集更新が可能
   before_action :check_user_correct, only: [:edit, :update]
   
@@ -35,11 +35,11 @@ class UsersController < ApplicationController
   end
   
   def followings
-     @users = current_user.following_users.order(created_at: :desc)
+     @users = @user.following_users.order(created_at: :desc)
   end
   
   def followers
-    @users = current_user.follower_users.order(created_at: :desc)
+    @users = @user.follower_users.order(created_at: :desc)
   end
   
   private

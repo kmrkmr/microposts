@@ -1,3 +1,4 @@
 <% @users.each do |user| %>
-   <h1><%= gravatar_for user %><%= user.name %></h1><br/>
+   <h1><%= gravatar_for user %><%= user.name %></h1>
+   <h2><%= link_to "どんな人？", user_path(user.id) %></h2><br/>
 <% end %>
