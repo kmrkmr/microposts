@@ -55,12 +55,4 @@ class UsersController < ApplicationController
   def check_user_correct
     redirect_to root_url if @user != current_user
   end
-  
-  # def set_message
-  #   @user = User.find(params[:id])
-  # end
-  
-  # def check_user_correct
-  #   redirect_to root_url if @user != current_user
-  # end
 end
